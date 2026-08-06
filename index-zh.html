@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Allen Chen 陈超 — 教育者 · 教练 · 领导者</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:   #0d1b2a;
+    --navy2:  #152536;
+    --navy3:  #1e3450;
+    --gold:   #c9a84c;
+    --gold2:  #e8c96a;
+    --cream:  #f5f0e8;
+    --white:  #ffffff;
+    --muted:  #8a9bb0;
+    --border: rgba(201,168,76,0.2);
+    --card:   rgba(255,255,255,0.04);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(13,27,42,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', 'Noto Sans SC', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold2); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 7rem 4rem 4rem;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(21,37,54,0.8) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.4rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 2.5rem; height: 1px; background: var(--gold);
+  }
+  .hero-name {
+    font-family: 'Playfair Display', 'Noto Sans SC', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .hero-name span { color: var(--gold); font-style: italic; }
+  .hero-roles {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+  .role-tag {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--navy);
+    background: var(--gold); padding: 0.35rem 0.9rem;
+    border-radius: 2px;
+  }
+  .role-tag.outline {
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold);
+  }
+  .hero-bio {
+    font-size: 1.05rem; color: rgba(245,240,232,0.75);
+    max-width: 520px; margin-bottom: 2.5rem; line-height: 1.8;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 0.85rem 2rem;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none; border-radius: 2px;
+    transition: all 0.25s; cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+  }
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--cream);
+    border: 1px solid rgba(245,240,232,0.3);
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  /* Hero photo */
+  .hero-photo-wrap {
+    position: relative; z-index: 1;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .hero-photo-frame {
+    width: min(420px, 90%);
+    aspect-ratio: 3/4;
+    border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+    background: var(--navy3);
+  }
+  .hero-photo-frame::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  .hero-photo-frame img {
+    width: 100%; height: 100%; object-fit: cover; object-position: 54% 42%; display: block;
+    opacity: 0.9;
+  }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem; color: var(--muted); font-size: 0.85rem; text-align: center;
+    padding: 2rem;
+  }
+  .photo-placeholder svg { opacity: 0.3; }
+  .photo-placeholder span { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; opacity: 0.6; }
+  .hero-corner-deco {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    width: 5rem; height: 5rem;
+    border: 2px solid var(--gold); opacity: 0.4;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat {
+    padding: 2rem 3rem;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', 'Noto Sans SC', serif;
+    font-size: 2.6rem; font-weight: 700;
+    color: var(--gold); line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    color: var(--gold); letter-spacing: 0.15em;
+  }
+  .section-title {
+    font-family: 'Playfair Display', 'Noto Sans SC', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700; color: var(--white);
+  }
+  .section-line {
+    flex: 1; height: 1px; background: var(--border); margin-bottom: 0.3rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: rgba(245,240,232,0.8); margin-bottom: 1.2rem; font-size: 1.02rem;
+  }
+  .about-photo-col { display: flex; flex-direction: column; gap: 1.5rem; }
+  .about-photo {
+    aspect-ratio: 4/3; background: var(--navy3);
+    border: 1px solid var(--border); overflow: hidden; position: relative;
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-photo img.photo-keystone { object-position: 50% 48%; }
+  .about-photo-sm {
+    aspect-ratio: 16/9; background: var(--navy3);
+    border: 1px solid var(--border); overflow: hidden;
+  }
+  .about-photo-sm img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-photo-sm img.photo-daystar { object-position: 50% 46%; }
+
+  /* ── COMPETENCIES ── */
+  .comp-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .comp-card {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 2rem; position: relative; overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .comp-card:hover {
+    border-color: rgba(201,168,76,0.5); transform: translateY(-3px);
+  }
+  .comp-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .comp-card:hover::before { opacity: 1; }
+  .comp-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .comp-title {
+    font-family: 'Playfair Display', 'Noto Sans SC', serif; font-size: 1.1rem;
+    font-weight: 700; color: var(--white); margin-bottom: 0.8rem;
+  }
+  .comp-list { list-style: none; }
+  .comp-list li {
+    font-size: 0.88rem; color: var(--muted);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .comp-list li::before { content: '—'; color: var(--gold); font-size: 0.75rem; }
+
+  /* ── EXPERIENCE ── */
+  .exp-timeline { position: relative; }
+  .exp-timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .exp-item {
+    padding-left: 2.5rem; margin-bottom: 3rem; position: relative;
+  }
+  .exp-item::before {
+    content: ''; position: absolute; left: -4px; top: 0.5rem;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--gold); border: 2px solid var(--navy);
+  }
+  .exp-meta {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .exp-date {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    color: var(--gold); letter-spacing: 0.1em;
+  }
+  .exp-tag {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; background: rgba(201,168,76,0.15);
+    color: var(--gold); padding: 0.2rem 0.7rem; border-radius: 2px;
+  }
+  .exp-title {
+    font-family: 'Playfair Display', 'Noto Sans SC', serif;
+    font-size: 1.25rem; font-weight: 700; color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  .exp-org { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.8rem; }
+  .exp-bullets { list-style: none; margin-bottom: 1rem; }
+  .exp-bullets li {
+    font-size: 0.92rem; color: rgba(245,240,232,0.72);
+    padding: 0.25rem 0; padding-left: 1.2rem; position: relative;
+  }
+  .exp-bullets li::before {
+    content: '›'; position: absolute; left: 0; color: var(--gold); font-weight: 700;
+  }
+  .exp-impact {
+    background: rgba(201,168,76,0.07); border-left: 2px solid var(--gold);
+    padding: 0.8rem 1.2rem; margin-top: 0.8rem;
+  }
+  .exp-impact-label {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .exp-impact p {
+    font-size: 0.88rem; color: rgba(245,240,232,0.75); font-style: italic;
+  }
+
+  /* two-col layout for experience section */
+  .exp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; }
+
+  /* ── BASKETBALL ── */
+  .bball-section { background: var(--navy2); }
+  .bball-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .bball-photo-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .bball-photo {
+    background: var(--navy3); border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .bball-photo:first-child {
+    grid-column: span 2; aspect-ratio: 16/7;
+  }
+  .bball-photo:not(:first-child) { aspect-ratio: 4/3; }
+  .bball-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .bball-photo img.photo-panthers-tournament { object-position: 50% 48%; }
+  .bball-photo img.photo-asa { object-position: 50% 46%; }
+  .bball-photo img.photo-panthers { object-position: 50% 45%; }
+
+  .bball-highlights { display: flex; flex-direction: column; gap: 1.2rem; }
+  .bball-hl {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.2rem; border: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .bball-hl:hover { border-color: rgba(201,168,76,0.4); }
+  .bball-hl-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .bball-hl-title {
+    font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem;
+  }
+  .bball-hl-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── CERTIFICATIONS / EDUCATION ── */
+  .cred-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .cred-card {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .cred-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
+  .cred-icon {
+    width: 3rem; height: 3rem; background: rgba(201,168,76,0.12);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .cred-title { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem; }
+  .cred-sub { font-size: 0.82rem; color: var(--muted); }
+  .cred-year {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    color: var(--gold); margin-top: 0.4rem;
+  }
+
+  /* ── LINKS / CONNECT ── */
+  .connect-section { background: var(--navy3); }
+  .links-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+  .link-card {
+    border: 1px solid var(--border); padding: 2rem;
+    display: flex; flex-direction: column; gap: 0.8rem;
+    text-decoration: none; color: inherit;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .link-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .link-card-icon { font-size: 2rem; }
+  .link-card-title { font-size: 1rem; font-weight: 600; color: var(--white); }
+  .link-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+  .link-card-url {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    color: var(--gold); margin-top: auto;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .link-card-url::after { content: '→'; }
+
+  .contact-row {
+    display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;
+    padding: 2rem; border: 1px solid var(--border);
+  }
+  .contact-item {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.9rem; color: rgba(245,240,232,0.8);
+  }
+  .contact-item a { color: var(--gold); text-decoration: none; }
+  .contact-item a:hover { text-decoration: underline; }
+  .contact-sep { color: var(--border); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', 'Noto Sans SC', serif; color: var(--gold); font-size: 1rem;
+  }
+  .footer-copy { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.25s; }
+  .fade-in:nth-child(3) { animation-delay: 0.4s; }
+  .fade-in:nth-child(4) { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; }
+    .hero-photo-frame { aspect-ratio: 4/3; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .stat { padding: 1.5rem 1.8rem; }
+    .stat:nth-child(2) { border-right: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .bball-grid, .exp-cols { grid-template-columns: 1fr; gap: 2.5rem; }
+    .comp-grid { grid-template-columns: 1fr 1fr; }
+    .links-grid { grid-template-columns: 1fr; }
+    .cred-grid { grid-template-columns: 1fr; }
+    footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+    .bball-photo-grid { grid-template-columns: 1fr; }
+    .bball-photo:first-child { grid-column: span 1; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Allen Chen 陈超</a>
+  <ul class="nav-links">
+    <li><a href="#about">关于我</a></li>
+    <li><a href="#experience">工作经历</a></li>
+    <li><a href="#basketball">篮球专长</a></li>
+    <li><a href="#credentials">资质认证</a></li>
+    <li><a href="#connect">联系方式</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-eyebrow fade-in">中国 · 北京 · 国际教育</div>
+    <h1 class="hero-name fade-in">Allen <span>Chen</span> 陈超</h1>
+    <div class="hero-roles fade-in">
+      <span class="role-tag">体育教师</span>
+      <span class="role-tag outline">体育主任</span>
+      <span class="role-tag outline">篮球主教练</span>
+      <span class="role-tag outline">俱乐部总监</span>
+    </div>
+    <p class="hero-bio fade-in">
+      深耕北京国际学校体育教育领域10余年，专注于体育项目建设、青少年篮球训练与学生活动管理，曾服务于北京多所顶尖国际学校，兼具战略视野与一线执行能力。
+    </p>
+    <div class="hero-cta fade-in">
+      <a href="#experience" class="btn btn-primary">查看工作经历</a>
+      <a href="#connect" class="btn btn-outline">联系我</a>
+    </div>
+  </div>
+
+  <div class="hero-photo-wrap fade-in">
+    <div class="hero-photo-frame">
+      <img src="Allen_Profile.jpg" alt="陈超（Allen Chen）职业形象照" fetchpriority="high" decoding="async" />
+    </div>
+    <div class="hero-corner-deco"></div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">国际教育从业年限</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">篮球执教年限</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">7+</div>
+    <div class="stat-label">运营黑豹俱乐部年限</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">K–12</div>
+    <div class="stat-label">全学段项目覆盖</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">关于我</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          我是一名扎根北京的国际学校教育工作者，十余年职业生涯横跨IB MYP体育与健康教育、K–12体育行政管理，以及大规模学生活动领导工作。我的工作始终立足于体育、教育与社区三者的交汇点，致力于为青少年运动员打造能够真正成长的环境。
+        </p>
+        <p>
+          从在启明星双语学校创建纵向衔接的篮球项目，到在海淀凯文学校统筹K–12体育与课外活动体系，我始终承担着既需要战略眼光又需要一线执行力的角色。无论是执教校队、与供应商洽谈合同，还是设计探究式体育课程单元，我都能够胜任并乐在其中。
+        </p>
+        <p>
+          在学校工作之外，我运营黑豹篮球学院（Panthers Basketball Academy）——北京最活跃的青少年篮球社群之一，全年负责联赛、训练营、邀请赛及校方合作项目。同时，我也是两个男孩的父亲，这让我始终牢记青少年成长中真正重要的东西。
+        </p>
+       
+      </div>
+      <div class="about-photo-col">
+        <div class="about-photo">
+          <img class="photo-keystone" src="Keystone 3.jpg" alt="陈超在启明星双语学校指导学生训练" loading="lazy" decoding="async" />
+        </div>
+        <div class="about-photo-sm">
+          <img class="photo-daystar" src="Daystar Girls 1.JPG" alt="星河双语学校女子篮球队与陈超合影" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCIES -->
+<section id="competencies" style="background:var(--navy2); padding-top:0; padding-bottom:5rem;">
+  <div class="section-inner">
+    <div class="section-header" style="padding-top:5rem;">
+      <span class="section-num">02</span>
+      <h2 class="section-title">核心能力</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-icon">🏫</div>
+        <div class="comp-title">教学与课程设计</div>
+        <ul class="comp-list">
+          <li>MYP体育与健康课程设计及评估</li>
+          <li>探究式单元设计</li>
+          <li>分层教学</li>
+          <li>融入IB学习者培养目标</li>
+          <li>学生目标设定与反思</li>
+        </ul>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🏆</div>
+        <div class="comp-title">体育管理领导力</div>
+        <ul class="comp-list">
+          <li>K–12体育部门统筹管理</li>
+          <li>ISAC / ACAMIS赛事运营</li>
+          <li>教练团队督导</li>
+          <li>安全保障合规管理</li>
+          <li>赛季规划与评估</li>
+        </ul>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">📋</div>
+        <div class="comp-title">课外活动管理</div>
+        <ul class="comp-list">
+          <li>K–12全学段ASA体系管理</li>
+          <li>供应商招募与合同管理</li>
+          <li>报名与沟通系统搭建</li>
+          <li>体验式与营地项目策划</li>
+          <li>跨学部协同统筹</li>
+        </ul>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🏀</div>
+        <div class="comp-title">篮球训练与发展</div>
+        <ul class="comp-list">
+          <li>青少年运动员培养（8–18岁）</li>
+          <li>小学 / 初中 / 高中校队执教</li>
+          <li>技能进阶训练体系</li>
+          <li>赛事备战与训练</li>
+          <li>学生教练领导力培养模式</li>
+        </ul>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🤝</div>
+        <div class="comp-title">学校与社区关系</div>
+        <ul class="comp-list">
+          <li>家长沟通渠道搭建</li>
+          <li>风险管理</li>
+          <li>学生领导力培养</li>
+          <li>中英双语沟通与推广</li>
+          <li>利益相关方关系管理</li>
+        </ul>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">⚙️</div>
+        <div class="comp-title">俱乐部运营</div>
+        <ul class="comp-list">
+          <li>联赛与赛事规划</li>
+          <li>教练与裁判团队协调</li>
+          <li>训练营设计与招生</li>
+          <li>预算与收入报表管理</li>
+          <li>社群推广与微信运营</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">工作经历</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="exp-cols">
+      <!-- LEFT COLUMN -->
+      <div class="exp-timeline">
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2025年8月 – 2026年7月</span>
+            <span class="exp-tag">教学</span>
+          </div>
+          <div class="exp-title">MYP体育与健康教师</div>
+          <div class="exp-org">星河双语学校（Daystar Academy）· 北京</div>
+          <ul class="exp-bullets">
+            <li>符合MYP标准的体育与健康课程——体能素养、健身与社会情感学习</li>
+            <li>探究式教学单元，注重技能进阶与学生目标设定</li>
+            <li>面向混合能力班级的分层教学</li>
+            <li>评估设计对齐MYP标准与IB学习者培养目标</li>
+          </ul>
+          <div class="exp-impact">
+            <div class="exp-impact-label">核心成效</div>
+            <p>加强了初高中体育升学路径的衔接；提升了学生在技能发展中的主动性</p>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2024年2月 – 2025年7月</span>
+            <span class="exp-tag">体育主任 · 课外活动 · 体育教师</span>
+          </div>
+          <div class="exp-title">体育主任 · 课外活动统筹 · 体育教师</div>
+          <div class="exp-org">海淀凯文学校 · 北京</div>
+          <ul class="exp-bullets">
+            <li>统筹管理K–12全学段体育：小学、初中、高中所有代表队</li>
+            <li>搭建ISAC / ACAMIS赛事参赛体系</li>
+            <li>督导教练团队，确保安全保障合规</li>
+            <li>全面管理K–12课外活动体系：供应商、教职工、社团</li>
+            <li>搭建报名系统与家长沟通渠道</li>
+            <li>在承担体育主任全部职责的同时开展体育教学</li>
+          </ul>
+          <div class="exp-impact">
+            <div class="exp-impact-label">核心成效</div>
+            <p>理顺了各学部课外活动体系 · 加强了学业与体育的融合 · 提升了学生参与度</p>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2023年2月 – 2024年2月</span>
+            <span class="exp-tag">学生活动</span>
+          </div>
+          <div class="exp-title">学生活动副主任</div>
+          <div class="exp-org">北京王府学校（BIBA）</div>
+          <ul class="exp-bullets">
+            <li>统筹K–12全学段供应商招募、合同管理与质量把控</li>
+            <li>搭建结构化的课外活动报名与评估体系</li>
+            <li>设计学术营地及海外体验式项目</li>
+            <li>负责小学与初中阶段青少年篮球训练与执教</li>
+          </ul>
+          <div class="exp-impact">
+            <div class="exp-impact-label">核心成效</div>
+            <p>推动供应商管理专业化 · 建立透明的家长沟通机制 · 拓展了小学至初中的篮球培养路径</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="exp-timeline">
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2019 – 2022</span>
+            <span class="exp-tag">学生活动</span>
+          </div>
+          <div class="exp-title">学生活动统筹</div>
+          <div class="exp-org">启明星双语学校 · 北京</div>
+          <ul class="exp-bullets">
+            <li>统筹中学阶段体育代表队及校际赛事参与</li>
+            <li>组织多个运动项目的ISAC / ACAMIS赛事后勤保障</li>
+            <li>开发周末体育活动项目</li>
+            <li>负责学生主导的活动框架与评估周期管理</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2014 – 2022</span>
+            <span class="exp-tag">执教</span>
+          </div>
+          <div class="exp-title">篮球主教练——小学 / 初中 / 高中</div>
+          <div class="exp-org">启明星双语学校 · 北京</div>
+          <ul class="exp-bullets">
+            <li>创建并发展全校纵向衔接的篮球项目</li>
+            <li>担任高中及初中男篮主教练；负责小学阶段男女混合培养</li>
+            <li>创建"学生教练"领导力培养模式——同伴互助执教</li>
+            <li>设计全校性体育文化建设项目</li>
+          </ul>
+          <div class="exp-impact">
+            <div class="exp-impact-label">核心成效</div>
+            <p>历时8年从零搭建起完整的纵向衔接篮球体系；同伴互助执教模式至今仍被学校沿用</p>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2014 – 2019</span>
+            <span class="exp-tag">行政</span>
+          </div>
+          <div class="exp-title">行政助理——教师发展与课程主任</div>
+          <div class="exp-org">启明星双语学校 · 北京</div>
+          <ul class="exp-bullets">
+            <li>统筹教师招聘后勤及招聘会参与工作</li>
+            <li>管理教师专业发展行政事务及新教师入职培训</li>
+            <li>支持小学至中学课程体系的衔接工作</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2018年 – 至今</span>
+            <span class="exp-tag">俱乐部</span>
+          </div>
+          <div class="exp-title">俱乐部总监 & 项目负责人</div>
+          <div class="exp-org">黑豹篮球学院 · 北京</div>
+          <ul class="exp-bullets">
+            <li>统筹俱乐部全部运营：联赛、赛事、训练营及校方合作项目</li>
+            <li>设计并运营黑豹青少年联赛（Panthers DBL）——结构化付费青少年联赛</li>
+            <li>管理小学、初中邀请赛及高中季后赛联赛</li>
+            <li>负责人员、场地运营、裁判安排及安全管理规范</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BASKETBALL -->
+<section id="basketball" class="bball-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">篮球专业能力</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="bball-grid">
+      <div>
+        <div class="bball-photo-grid">
+          <div class="bball-photo">
+            <img class="photo-panthers-tournament" src="Panthers_tournament.JPG" alt="黑豹篮球学院赛事队伍合影" loading="lazy" decoding="async" />
+          </div>
+          <div class="bball-photo">
+            <img class="photo-asa" src="ASA.JPG" alt="学生参与篮球课外活动课程" loading="lazy" decoding="async" />
+          </div>
+          <div class="bball-photo">
+            <img class="photo-panthers" src="Panthers 1.JPG" alt="黑豹篮球学院球员训练场景" loading="lazy" decoding="async" />
+          </div>
+           <div class="bball-photo">
+            <img class="photo-panthers" src="Keystone MS.JPG" alt="黑豹篮球学院球员训练场景" loading="lazy" decoding="async" />
+          </div>
+          <div class="bball-photo">
+            <img class="photo-panthers" src="AC_Action1.JPG" alt="黑豹篮球学院球员训练场景" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+      <div class="bball-highlights">
+        <div class="bball-hl">
+          <div class="bball-hl-icon">🏅</div>
+          <div>
+            <div class="bball-hl-title">15年以上青少年执教经验</div>
+            <div class="bball-hl-text">执教8–18岁各年龄段球员，涵盖小学、初中及高中校队。持有CBA中级教练证书（2016年）。培养球员从基础入门到国内及国际赛事水平。</div>
+          </div>
+        </div>
+        <div class="bball-hl">
+          <div class="bball-hl-icon">🦁</div>
+          <div>
+            <div class="bball-hl-title">黑豹篮球学院</div>
+            <div class="bball-hl-text">自2018年起担任俱乐部总监及主教练。运营黑豹青少年联赛（Panthers DBL）、小学与初中邀请赛、高中季后赛联赛，以及全年假期训练营。是北京最活跃的青少年篮球社群之一。</div>
+          </div>
+        </div>
+        <div class="bball-hl">
+          <div class="bball-hl-icon">🌏</div>
+          <div>
+            <div class="bball-hl-title">国际赛事经验</div>
+            <div class="bball-hl-text">带队参加亚洲多国校际赛事，全程负责后勤管理、行程协调及赛前备战。同时主办面向小学、初中及高中阶段的黑豹邀请赛。</div>
+          </div>
+        </div>
+        <div class="bball-hl">
+          <div class="bball-hl-icon">🏫</div>
+          <div>
+            <div class="bball-hl-title">交付3个学校合作项目</div>
+            <div class="bball-hl-text">为星河双语学校、海淀凯文、北京王府（BIBA）及启明星双语学校设计并交付符合课程标准的课外篮球项目——将学校目标与专业俱乐部执教水平相结合。</div>
+          </div>
+        </div>
+        <div class="bball-hl">
+          <div class="bball-hl-icon">🎓</div>
+          <div>
+            <div class="bball-hl-title">学生教练领导力培养模式</div>
+            <div class="bball-hl-text">在启明星双语学校创立同伴互助执教模式——让高年级学生担任低年级球员的教练。这一学生领导力培养方式至今仍被学校沿用。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">教育背景与资质认证</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <div class="cred-icon">📜</div>
+        <div>
+          <div class="cred-title">IB MYP体育与健康 — 一级认证</div>
+          <div class="cred-sub">IB专业发展培训</div>
+          <div class="cred-year">2026</div>
+        </div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🏀</div>
+        <div>
+          <div class="cred-title">CBA中级教练资格证书</div>
+          <div class="cred-sub">中国篮球协会</div>
+          <div class="cred-year">2016</div>
+        </div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🧑‍🏫</div>
+        <div>
+          <div class="cred-title">中国教师资格证 — 小学体育</div>
+          <div class="cred-sub">中华人民共和国教育部</div>
+          <div class="cred-year">2022</div>
+        </div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🌐</div>
+        <div>
+          <div class="cred-title">商务语言翻译证书</div>
+          <div class="cred-sub">中英双语</div>
+          <div class="cred-year">2008</div>
+        </div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🎓</div>
+        <div>
+          <div class="cred-title">应用物理学学士学位</div>
+          <div class="cred-sub">中央民族大学 · 北京</div>
+          <div class="cred-year">2009</div>
+        </div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🩺</div>
+        <div>
+          <div class="cred-title">急救与心肺复苏（CPR）认证</div>
+          <div class="cred-sub">有效认证</div>
+          <div class="cred-year">当前有效</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div style="margin-top:3rem;">
+      <h3 style="font-family:'Playfair Display','Noto Sans SC',serif; font-size:1.3rem; color:var(--white); margin-bottom:1.5rem;">语言能力</h3>
+      <div style="display:flex; gap:2rem; flex-wrap:wrap;">
+        <div style="flex:1; min-width:200px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+            <span style="font-size:0.9rem; color:var(--cream);">普通话</span>
+            <span style="font-size:0.8rem; color:var(--gold);">母语</span>
+          </div>
+          <div style="height:3px; background:var(--navy3); border-radius:2px; overflow:hidden;">
+            <div style="width:100%; height:100%; background:var(--gold);"></div>
+          </div>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+            <span style="font-size:0.9rem; color:var(--cream);">英语</span>
+            <span style="font-size:0.8rem; color:var(--gold);">专业水平</span>
+          </div>
+          <div style="height:3px; background:var(--navy3); border-radius:2px; overflow:hidden;">
+            <div style="width:88%; height:100%; background:var(--gold);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect" class="connect-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">联系方式与链接</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="links-grid">
+      <a href="https://www.linkedin.com/in/allen-chen-coachforlife/" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card-icon">💼</div>
+        <div class="link-card-title">LinkedIn 主页</div>
+        <div class="link-card-desc">职业社交网络、他人推荐及完整职业履历。</div>
+        <div class="link-card-url">linkedin.com/in/allen-chen-coachforlife</div>
+      </a>
+      <!-- Search Associates: replace href with actual URL -->
+      <a href="YOUR_SEARCH_ASSOCIATES_URL" target="_blank" class="link-card">
+        <div class="link-card-icon">🔍</div>
+        <div class="link-card-title">Search Associates</div>
+        <div class="link-card-desc">国际学校招聘平台个人资料及推荐人信息。</div>
+        <div class="link-card-url">searchassociates.com</div>
+      </a>
+      <!-- Download CV -->
+      <a href="Allen_Chen___CV.pdf" download class="link-card">
+        <div class="link-card-icon">📄</div>
+        <div class="link-card-title">下载简历</div>
+        <div class="link-card-desc">完整个人简历及篮球专业能力说明文档（PDF格式）。</div>
+        <div class="link-card-url">下载PDF</div>
+      </a>
+    </div>
+
+    <div class="contact-row">
+      <div class="contact-item">
+        <span>📍</span> 中国，北京
+      </div>
+      <span class="contact-sep">|</span>
+      <div class="contact-item">
+        <span>📞</span>
+        <a href="tel:+8615811376447">+86 158 1137 6447</a>
+      </div>
+      <span class="contact-sep">|</span>
+      <div class="contact-item">
+        <span>✉️</span>
+        <a href="mailto:allenchen_ac@qq.com">allenchen_ac@qq.com</a>
+      </div>
+      <span class="contact-sep">|</span>
+      <div class="contact-item">
+        <span>🗣️</span> 普通话（母语）· 英语（专业水平）
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Allen Chen 陈超</span>
+  <span class="footer-copy">体育教师 · 体育主任 · 篮球教练 · 中国北京</span>
+  <span class="footer-copy" style="font-size:0.72rem; opacity:0.5;">推荐人信息可应要求提供</span>
+</footer>
+
+<script>
+  // Intersection Observer for scroll-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.comp-card, .exp-item, .bball-hl, .cred-card, .link-card, .stat').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
